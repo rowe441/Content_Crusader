@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Account</title>
+  <link rel="icon" type="image/x-icon" href="image/fav.png">
+  <link rel="stylesheet" href="Global.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles for User Account page */
+    body {
+      font-family: 'DM Serif Text', serif;
+      line-height: 1.6;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #0c3c58;
+      color: white;
+      padding: 10px 0;
+    }
+    .header .glass-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header nav {
+      display: flex;
+      align-items: center;
+    }
+    .header .nav-center ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .header .nav-center ul li {
+      margin: 0 10px;
+    }
+    .header .nav-center ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    .header .nav-center ul li a:hover {
+      text-decoration: underline;
+    }
+    .header .right-side {
+      display: flex;
+      align-items: center;
+    }
+    .header .search-container {
+      margin-right: 20px;
+    }
+    .header .search-container input[type="text"] {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+    .header .search-container button {
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .header .search-container button:hover {
+      background-color: #45a049;
+    }
+    .header .profile-icon {
+      position: relative;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    .header .profile-icon img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .header .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      right: 0;
+      top: 60px;
+    }
+    .header .dropdown-menu a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .header .dropdown-menu a:hover {
+      background-color: #f1f1f1;
+    }
+    .header .dropdown-menu a:first-child {
+      border-bottom: 1px solid #ddd;
+    }
+    .user-container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .user-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0c3c58;
+    }
+    .user-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .user-details label {
+      font-weight: bold;
+      color: #0c3c58;
+    }
+    .user-details .username {
+      font-size: 1.2em;
+      color: #4CAF50;
+    }
+    .user-details .privacy {
+      font-size: 0.9em;
+      color: #888;
+    }
+    .edit-profile-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .edit-profile-button:hover {
+      background-color: #45a049;
+    }
+    .footer {
+      background-color: #0c3c58;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="glass-container">
+    <nav>
+      <a href="Dashboard.html" class="logo"><img src="image/Logo.png" alt="Logo"></a>
+      <div class="nav-center">
+        <ul>
+          <li><a href="Solutions.html">Solutions</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="About.html">About</a></li>
+        </ul>
+      </div>
+      <div class="right-side">
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search here...">
+          <button type="button" onclick="performSearch()">Search</button>
+        </div>
+        <div class="profile-icon" onclick="toggleDropdownMenu()">
+          <img src="image/profile.png" alt="Profile" id="profile-icon">
+          <div class="dropdown-menu" id="dropdown-menu">
+            <a href="Logout.php">Logout</a>
+            <a href="upload.php" onclick="openUpload()">Upload</a>
+            <a href="Privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="user-container">
+  <h2>User Account</h2>
+  <div class="user-details">
+    <label for="username">Username:</label>
+    <span class="username" id="username"></span>
+  </div>
+  <div class="user-details">
+    <label for="uploads">Uploads:</label>
+    <span id="upload-count"></span>
+  </div>
+  <div class="user-details">
+    <label for="privacy">Privacy:</label>
+    <span class="privacy"></span>
+  </div>
+  <button class="edit-profile-button" onclick="editProfile()">Edit Profile</button>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2024 Content Crusader Guide. All rights reserved.</p>
+</footer>
+
+<div class="upload-container" id="upload-container">
+  <!-- Your existing upload form -->
+</div>
+
+<script>
+  function toggleDropdownMenu() {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  function openUpload() {
+    document.getElementById('upload-container').style.display = 'block';
+  }
+
+  function closeUpload() {
+    document.getElementById('upload-container').style.display = 'none';
+  }
+
+  function editProfile() {
+    alert('Implement profile editing functionality here.');
+  }
+
+  // Fetch user data from server
+  async function fetchUserData() {
+    try {
+      const response = await fetch('crusadersignup'); // Adjust the URL to your actual API endpoint
+      if (response.ok) {
+        const userData = await response.json();
+        document.getElementById('user').textContent = userData.username;
+        document.getElementById('uploaded_file').textContent = userData.uploads;
+        document.querySelector('.privacy').textContent = userData.privacy;
+      } else {
+        console.error('Failed to fetch user data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  // Call the function to fetch user data when the page loads
+  window.onload = fetchUserData;
+</script>
+
+</body>
+</html>

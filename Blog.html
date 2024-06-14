@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Content Crusader Guide</title>
+  <link rel="icon" type="image/x-icon" href="image/fav.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(image/background.png);
+      min-height: 100vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      font-family: 'DM Serif Text', serif;
+      color: #ffffff;
+    }
+
+    .header {
+      width: 100%;
+      height: 90px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      justify-content: space-between;
+    }
+    
+    .glass-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo img {
+      width: 160px;
+    }
+    
+    .nav-center {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+    }
+    
+    .nav-center ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-center ul li a {
+      margin: 0 30px;
+      padding: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .nav-center ul li a:hover {
+      color: yellow;
+    }
+    
+    .profile-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .profile-icon img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      width: 150px;
+    }
+    
+    .dropdown-menu a {
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+    }
+    
+    .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .blog-section {
+      padding: 100px 0;
+    }
+
+    .blog-container {
+      width: 80%;
+      margin: auto;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .blog-container h2 {
+      color: yellow;
+      font-size: 50px;
+      font-weight: 600;
+      margin-bottom: 50px;
+    }
+
+    .blog-item {
+      text-align: left;
+      margin-bottom: 30px;
+      background-color: blue;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .blog-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .blog-item h3 {
+      color: #000;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .blog-item p {
+      color: deeppink;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .blog-item h3 a {
+      color: deeppink;
+      transition: color 0.3s;
+    }
+
+    .blog-item h3 a:hover {
+      color: yellow;
+    }
+
+    .button-container {
+      margin-top: 30px;
+    }
+
+    .button-container button {
+      background-color: transparent;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: 2px solid #ffffff;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .button-container button:hover {
+      background-color: #fcf405;
+      color: royalblue;
+      box-shadow: 0 0 10px 5px #FFFF33;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .contents-col {
+      width: calc(33.33% - 20px);
+      background: darkblue;
+      border-radius: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .contents-col:hover {
+      transform: translateY(-10px);
+    }
+
+    .contents-col h3 {
+      color: deeppink;
+    }
+
+    .contents-col h3 a {
+      color: deeppink;
+      transition: color 0.3s;
+    }
+
+    .contents-col h3 a:hover {
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="glass-container">
+      <a href="Dashboard.html" class="logo"><img src="image/Logo.png" alt="Logo"></a>
+      <div class="nav-center">
+        <ul>
+          <li><a href="Solutions.html">Solutions</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="About.html">About</a></li>
+        </ul>
+      </div>
+      <div class="profile-icon" onclick="toggleDropdownMenu()">
+        <img src="image/profile.png" alt="Profile" id="profile-icon">
+        <div class="dropdown-menu" id="dropdown-menu">
+          <!--<a href="User Account.html">User Account</a>-->
+          <a href="Logout.php">Logout</a>
+          <a href="upload.php" onclick="openUpload()">Upload</a>
+          <a href="Privacy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="blog-section">
+    <div class="blog-container">
+      <h2>Blog</h2>
+      <div class="row">
+        <div class="contents-col">
+          <h3><a href="https://blog.hubspot.com/marketing">HubSpot Marketing Blog</a></h3>
+          <p>HubSpot's blog covers a wide range of marketing topics, including trends, strategies, and insights across various industries.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://www.marketingprofs.com/">MarketingProfs</a></h3>
+          <p>MarketingProfs provides marketing education and insights, focusing on trends, strategies, and best practices for marketers.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://neilpatel.com/">Neil Patel</a></h3>
+          <p>Neil Patel's blog covers digital marketing trends, SEO, content marketing, and social media strategies.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://contentmarketinginstitute.com/">Content Marketing Institute</a></h3>
+          <p>Content Marketing Institute offers insights and resources on content marketing trends, strategies, and industry news.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://copyblogger.com/">Copyblogger</a></h3>
+          <p>Copyblogger provides resources on content marketing, copywriting, and content strategy for digital marketers.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://moz.com/blog">Moz Blog</a></h3>
+          <p>Moz's blog covers SEO, content marketing, and digital marketing trends with a focus on actionable strategies and insights.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://contentstrategyalliance.com/">Content Strategy Alliance</a></h3>
+          <p>CSA provides resources and best practices for developing and executing effective content strategies across various platforms.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://uxbooth.com/">UX Booth</a></h3>
+          <p>UX Booth publishes content on user experience, design, and content strategy, offering insights for content creators.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://www.socialmediaexaminer.com/">Social Media Examiner</a></h3>
+          <p>Social Media Examiner provides insights and tips on social media marketing, trends, and strategies.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://buffer.com/resources/">Buffer Blog</a></h3>
+          <p>Buffer's blog covers social media marketing, tips, trends, and strategies for managing social media accounts.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://sproutsocial.com/insights/">Sprout Social Insights</a></h3>
+          <p>Sprout Social's blog offers insights and tips on social media management, strategies, and trends.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://blog.hootsuite.com/">Hootsuite Blog</a></h3>
+          <p>Hootsuite's blog provides resources on social media marketing, trends, and best practices for businesses.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://searchengineland.com/">Search Engine Land</a></h3>
+          <p>Search Engine Land covers all aspects of SEO, SEM, and search marketing news and trends.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://ahrefs.com/blog/">Ahrefs Blog</a></h3>
+          <p>Ahrefs' blog provides actionable SEO advice, techniques, and case studies to help increase search traffic.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://www.semrush.com/blog/">SEMrush Blog</a></h3>
+          <p>SEMrush's blog covers SEO, SEM, content marketing, and digital marketing trends and strategies.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://backlinko.com/">Backlinko</a></h3>
+          <p>Backlinko provides actionable SEO advice, techniques, and case studies to help increase search traffic.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://www.underconsideration.com/brandnew/">Brand New</a></h3>
+          <p>Brand New is a division of UnderConsideration, providing opinions on corporate and brand identity work.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://info.brandfolder.com/blog-email-signup/">Brandfolder Blog</a></h3>
+          <p>Brandfolder's blog covers topics related to brand management, digital asset management, and brand strategy.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://www.siegelgale.com/">Siegel+Gale</a></h3>
+          <p>Siegel+Gale's blog offers insights and articles on branding, simplicity, and brand strategy.</p>
+        </div>
+        <div class="contents-col">
+          <h3><a href="https://landor.com/en/">Landor</a></h3>
+          <p>Landor's blog provides insights and articles on branding, design, and brand strategy across various industries.</p>
+        </div>
+      </div>
+      <!-- Back button -->
+      <div class="button-container">
+        <button onclick="goBack()">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdownMenu() {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function openUpload() {
+      document.getElementById('upload-container').style.display = 'block';
+    }
+
+    function closeUpload() {
+      document.getElementById('upload-container').style.display = 'none';
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

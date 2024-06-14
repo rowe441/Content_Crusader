@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media</title>
+  <link rel="icon" type="image/x-icon" href="image/fav.png">
+  <link rel="stylesheet" href="Global.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+  <div class="glass-container">
+    <nav>
+      <a href="Dashboard.html" class="logo"><img src="image/Logo.png" alt="Logo"></a>
+      <div class="nav-center">
+        <ul>
+            <li><a href="Solutions.html">Solutions</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="About.html">About</a></li>
+        </ul>
+      </div>
+      <div class="right-side">
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search here...">
+          <button type="button" onclick="performSearch()">Search</button>
+        </div>
+        <div class="profile-icon" onclick="toggleDropdownMenu()">
+          <img src="image/profile.png" alt="Profile" id="profile-icon">
+          <div class="dropdown-menu" id="dropdown-menu">
+            <a href="#">User Account</a>
+            <a href="Logout.php">Logout</a>
+            <a href="#" onclick="openUpload()">Upload</a>
+            <a href="#">Privacy</a>
+            <a href="#">Settings</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <div class="categories-container">
+    <h2>Categories</h2>
+    <div class="button-container">
+      <a href="Dashboard.html"><button class="filter-button " data-category="DASHBOARD">DASHBOARD</button></a>
+      <a href="MARKETING TRENDS.html"><button class="filter-button " data-category="MARKETING TRENDS">MARKETING TRENDS</button></a>
+      <a href="CONTENT STRATEGY.html"><button class="filter-button " data-category="CONTENT STRATEGY">CONTENT STRATEGY</button></a>
+      <a href="SOCIAL MEDIA.html"><button class="filter-button active" data-category="SOCIAL_MEDIA">SOCIAL MEDIA</button></a>
+      <a href="SEO.html"><button class="filter-button" data-category="S_E_O">S.E.O</button></a>
+      <a href="BRANDING.html"><button class="filter-button" data-category="BRANDING">BRANDING</button></a>
+  </div>
+
+  <div class="introduction">
+    <h1>Social Media</h1>
+    <h4>Explore the latest trends and insights in the marketing world. Stay updated with the newest strategies and techniques to enhance your marketing efforts.</h4>
+  </div>
+
+  <div class="cards-container" id="cards-container">
+    <!-- Example card -->
+    <div class="card">
+      <div class="image-box">
+        <img src="image/mk.png" alt="Article Image">
+      </div>
+      <a href="#" class="profile-link">
+        <h2>Article Title</h2>
+      </a>
+      <div class="profile-details">
+        <img src="image/profile1.jpg" alt="Author">
+        <div class="name-job">
+          <h3 class="name">Vince</h3>
+          <h4 class="job">Trend Setter</h4>
+        </div>
+      </div>
+      <p>Article content here. Users can comment and react.</p>
+    </div>
+    <!-- Add more cards here dynamically -->
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Content Crusader Guide. All rights reserved.</p>
+  </footer>
+
+  <div class="upload-container" id="upload-container">
+    <h3>Upload PDF</h3>
+    <form action="" method="POST" enctype="multipart/form-data" id="upload-form">
+      <input type="file" id="pdf-upload" name="pdf" accept=".pdf" required>
+      <br><br>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <br><br>
+      <label for="abstract">Abstract:</label><br>
+      <textarea id="abstract" name="abstract" rows="4" cols="50" required></textarea>
+      <br><br>
+      <label for="creator">Creator Name:</label>
+      <input type="text" id="creator" name="creator" required>
+      <br><br>
+      <label for="type">Type:</label>
+      <select id="type" name="type" required>
+        <option value="Marketing Trends">Marketing Trends</option>
+        <option value="Content Strategy">Content Strategy</option>
+        <option value="Social Media">Social Media</option>
+        <option value="S.E.O">S.E.O</option>
+        <option value="Branding">Branding</option>
+      </select>
+      <br><br>
+      <button type="button" onclick="uploadFile()">Upload</button>
+      <button type="button" onclick="closeUpload()">Close</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleDropdownMenu() {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function openUpload() {
+      document.getElementById('upload-container').style.display = 'block';
+    }
+
+    function closeUpload() {
+      document.getElementById('upload-container').style.display = 'none';
+    }
+
+    function uploadFile() {
+      const fileInput = document.getElementById('pdf-upload');
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file');
+        return;
+      }
+
+      // Create FormData object
+      const formData = new FormData();
+      formData.append('pdf', file);
+      formData.append('title', document.getElementById('title').value);
+      formData.append('abstract', document.getElementById('abstract').value);
+      formData.append('creator', document.getElementById('creator').value);
+      formData.append('type', document.getElementById('type').value);
+
+      fetch('upload.php', {
+        method: 'POST',
+        body: formData
+      }).then(response => response.text())
+        .then(data => {
+          alert(data);
+          closeUpload();
+          // Optionally, you can refresh or update the page content here
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>

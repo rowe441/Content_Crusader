@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Content Crusader Guide</title>
+    <link rel="icon" type="image/x-icon" href="image/fav.png">
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(image/background.png);
+      min-height: 100vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      font-family: 'DM Serif Text', serif;
+      color: #ffffff;
+    }
+
+    /* Header styles */
+    .header {
+      width: 100%;
+      height: 90px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      justify-content: space-between;
+    }
+    .glass-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo img {
+      width: 160px;
+    }
+    .nav-center {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+    }
+    .nav-center ul {
+      display: flex;
+      list-style: none;
+    }
+    .nav-center ul li a {
+      margin: 0 30px;
+      padding: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+    .nav-center ul li a:hover {
+      color: yellow;
+    }
+    .profile-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .profile-icon img {
+      width: 40px;
+      height: 40px;
+    }
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      width: 150px;
+    }
+    .dropdown-menu a {
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Main content styles */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      padding: 100px 20px 20px;
+      overflow: hidden;
+    }
+    .about-us {
+      max-width: 1500px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+      padding: 20px;
+    }
+    .about-us h1, .about-us h2, .about-us h3, .about-us h4 {
+      color: yellow;
+      font-size: 2em; /* Increase font size */
+      text-align: center;
+      margin-bottom: 20px; /* Add some space below headings */
+    }
+    .about-us p {
+      line-height: 1.6;
+      text-align: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.2em; /* Increase font size */
+    }
+    .about-us img {
+      width: 150px; /* Decrease image size */
+      height: 150px; /* Decrease image size */
+      border-radius: 50%;
+      margin-bottom: 20px; /* Add some space below images */
+    }
+    .team-member {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .contact {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .contact ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+
+    }
+    .contact ul li {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    /* Footer styles */
+    .footer {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: yellow;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="glass-container">
+      <a href="Dashboard.html" class="logo"><img src="image/Logo.png" alt="Logo"></a>
+      <div class="nav-center">
+        <ul>
+          <li><a href="Solutions.html">Solutions</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="About.html">About</a></li>
+        </ul>
+      </div>
+      <div class="profile-icon" onclick="toggleDropdownMenu()">
+        <img src="image/profile.png" alt="Profile" id="profile-icon">
+        <div class="dropdown-menu" id="dropdown-menu">
+          <!--<a href="User Account.html">User Account</a>-->
+          <a href="Logout.php">Logout</a>
+          <a href="upload.php" onclick="openUpload()">Upload</a>
+          <a href="Privacy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="about-us">
+      <section class="intro">
+        <h1>About Us</h1>
+        <p>Welcome to Marketing Trends, your go-to source for the latest insights and strategies in the marketing world. We are dedicated to helping you stay ahead of the curve with up-to-date information on the most effective marketing techniques and trends.</p>
+      </section>
+
+      <section class="our-mission">
+        <h2>Our Mission</h2>
+        <p>Our mission is to empower marketers with the knowledge and tools they need to succeed in a rapidly evolving landscape. We believe in the power of information and aim to provide comprehensive resources that cover all aspects of marketing.</p>
+      </section>
+
+      <section class="team">
+        <h2>Meet the Team</h2>
+        <div class="team-member">
+          <div>
+            <img src="image/vince.jpg" alt="Team Member">
+            <h3>Vince John Batuigas</h3>
+            <h4>Trend Setter</h4>
+            <p>Vince is a marketing expert with over 10 years of experience in the industry. He is passionate about discovering new trends and sharing his insights with others.</p>
+          </div>
+          <div>
+            <img src="image/paul.jpg" alt="Team Member">
+            <h3>John Paul Togonon</h3>
+            <h4>Marketing Specialist</h4>
+            <p>Paul has a keen eye for market analysis and is always on the lookout for new marketing strategies.</p>
+          </div>
+          <div>
+            <img src="image/rowe.jpg" alt="Team Member">
+            <h3>Rowe Sabanal</h3>
+            <h4>Insights Manager</h4>
+            <p>Rowe specializes in creating engaging content that captures the audience's attention.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to learn more about what we do, feel free to get in touch with us.</p>
+        <ul>
+          <li>Vince Email:batuigasvincejohn@gmail.com</li>
+          <li>John Paul Email:johnpaultogonon123@gmail.com</li>
+          <li>Rowe Email:rowesabaan@gmail.com</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Address: Poblacion, Claveria, Misamis Oriental, Philippines</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Marketing Trends. All rights reserved.Disclaimer this website is for School Puposes only!</p>
+  </footer>
+
+  <script>
+    function toggleDropdownMenu() {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function openUpload() {
+      document.getElementById('upload-container').style.display = 'block';
+    }
+
+    function closeUpload() {
+      document.getElementById('upload-container').style.display = 'none';
+    }
+
+    function performSearch() {
+      // Implement search functionality
+    }
+  </script>
+</body>
+</html>

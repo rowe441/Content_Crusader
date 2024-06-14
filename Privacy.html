@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Content Crusader Guide</title>
+  <link rel="icon" type="image/x-icon" href="image/fav.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(image/background.png);
+      min-height: 100vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      font-family: 'DM Serif Text', serif;
+      color: #ffffff;
+    }
+
+    .header {
+      width: 100%;
+      height: 90px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      justify-content: space-between;
+    }
+
+    .glass-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 160px;
+    }
+
+    .nav-center {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .nav-center ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-center ul li a {
+      margin: 0 30px;
+      padding: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .nav-center ul li a:hover {
+      color: yellow;
+    }
+
+    .profile-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .profile-icon img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      width: 150px;
+    }
+
+    .dropdown-menu a {
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      padding: 100px 20px 20px;
+      overflow: hidden;
+    }
+
+    .privacy {
+      max-width: 1500px;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .privacy h1, .privacy h2, .privacy h3 {
+      color: yellow;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .privacy p {
+      line-height: 1.6;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    .privacy-item {
+      margin-bottom: 30px;
+    }
+
+    .footer {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: yellow;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="glass-container">
+      <a href="Dashboard.html" class="logo"><img src="image/Logo.png" alt="Logo"></a>
+      <div class="nav-center">
+        <ul>
+          <li><a href="Solutions.html">Solutions</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+          <li><a href="About.html">About</a></li>
+        </ul>
+      </div>
+      <div class="profile-icon" onclick="toggleDropdownMenu()">
+        <img src="image/profile.png" alt="Profile" id="profile-icon">
+        <div class="dropdown-menu" id="dropdown-menu">
+          <!--<a href="User Account.html">User Account</a>-->
+          <a href="Logout.php">Logout</a>
+          <a href="upload.php" onclick="openUpload()">Upload</a>
+          <a href="Privacy.html">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="privacy">
+      <section class="intro">
+        <h1>Privacy Policy</h1>
+        <p>Welcome to our Privacy Policy page. Here we explain how we collect, use, and protect your personal data.</p>
+      </section>
+
+      <section class="privacy-item">
+        <h2>Data Collection</h2>
+        <p>We collect and use your personal data for the purposes set out in our Privacy Policy.</p>
+      </section>
+
+      <section class="privacy-item">
+        <h2>Data Protection</h2>
+        <p>We protect your personal data using industry-standard security measures.</p>
+      </section>
+
+      <section class="privacy-item">
+        <h2>Privacy Rights</h2>
+        <p>You have the right to access, correct, or delete your personal data.</p>
+      </section>
+
+      <section class="privacy-item">
+        <h2>Updates to Our Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2024 Marketing Trends. All rights reserved. Disclaimer: this website is for School Purposes only!</p>
+  </footer>
+
+  <script>
+    function toggleDropdownMenu() {
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function openUpload() {
+      document.getElementById('upload-container').style.display = 'block';
+    }
+
+    function closeUpload() {
+      document.getElementById('upload-container').style.display = 'none';
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: beige;
+}
+
+.container {
+  max-width: 300px;
+  width: 100%;
+  background-color: grey;
+}
+
+.card {
+  width: 312px;
+  background: white;
+  border-radius: 8px;
+  margin-right: 20px; /* Adjust this margin to reduce the gap */
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text horizontally */
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card .image-box {
+  height: 200px;
+}
+
+.card .image-box img {
+  height: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card .profile-details {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  padding: 15px;
+}
+
+.card .profile-details img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.profile-details .name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.profile-details .job {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Add CSS for the profile link */
+.profile-link {
+  display: block; /* Ensure the entire anchor tag is clickable */
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Inherit text color from parent */
+  margin-bottom: 10px; /* Adjust as needed for spacing */
+  font-size: 15px; /* Adjust font size as needed */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.profile-link:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
